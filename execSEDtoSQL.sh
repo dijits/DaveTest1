@@ -7,8 +7,9 @@ do
     echo $stubprefix
     for stubsed in $stubprefix*.sed
     do
-        echo $stubsed
-        sed -f $stubsed  $stubsql > $stubprefix.sql
+        sqlfilename="`echo $stubsed | awk '{print substr($0,1,(length($0)-4))}'`"
+        echo $sqlfilename
+        sed -f $stubsed  $stubsql > $sqlfilename.sql
     done
 
 done
